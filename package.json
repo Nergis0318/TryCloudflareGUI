@@ -1,0 +1,56 @@
+{
+  "name": "try-cloudflare-gui",
+  "version": "1.0.0",
+  "description": "GUI application for managing Try Cloudflare tunnels",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "concurrently \"bun run dev:vite\" \"bun run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "wait-on http://localhost:5173 && tsc -p tsconfig.main.json && electron .",
+    "build": "vite build && tsc -p tsconfig.main.json",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:electron": "bun run build && electron-builder",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "DevNergis",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/tar": "^7.0.87",
+    "@vitejs/plugin-react": "^6.0.1",
+    "concurrently": "^9.2.1",
+    "electron": "^41.2.0",
+    "electron-builder": "^26.8.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.8",
+    "wait-on": "^9.0.4"
+  },
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "tar": "^7.5.13"
+  },
+  "build": {
+    "appId": "dev.nergis.trycloudflaregui",
+    "productName": "TryCloudflare GUI",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
