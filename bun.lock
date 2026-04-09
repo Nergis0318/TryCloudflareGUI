@@ -5,22 +5,23 @@
     "": {
       "name": "try-cloudflare-gui",
       "dependencies": {
-        "react": "latest",
-        "react-dom": "latest",
-        "tar": "latest",
+        "pretendard-gov": "^1.3.9",
+        "react": "^19.2.5",
+        "react-dom": "^19.2.5",
+        "tar": "^7.5.13",
       },
       "devDependencies": {
-        "@types/node": "latest",
-        "@types/react": "latest",
-        "@types/react-dom": "latest",
-        "@types/tar": "latest",
-        "@vitejs/plugin-react": "latest",
-        "concurrently": "latest",
-        "electron": "latest",
-        "electron-builder": "latest",
-        "typescript": "latest",
-        "vite": "latest",
-        "wait-on": "latest",
+        "@types/node": "^25.5.2",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
+        "@types/tar": "^7.0.87",
+        "@vitejs/plugin-react": "^6.0.1",
+        "concurrently": "^9.2.1",
+        "electron": "^41.2.0",
+        "electron-builder": "^26.8.1",
+        "typescript": "^6.0.2",
+        "vite": "^8.0.8",
+        "wait-on": "^9.0.4",
       },
     },
   },
@@ -566,6 +567,8 @@
     "postcss": ["postcss@8.5.8", "", { "dependencies": { "nanoid": "^3.3.11", "picocolors": "^1.1.1", "source-map-js": "^1.2.1" } }, "sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg=="],
 
     "postject": ["postject@1.0.0-alpha.6", "", { "dependencies": { "commander": "^9.4.0" }, "bin": "dist/cli.js" }, "sha512-b9Eb8h2eVqNE8edvKdwqkrY6O7kAwmI8kcnBv1NScolYJbo59XUF0noFq+lxbC1yN20bmC0WBEbDC5H/7ASb0A=="],
+
+    "pretendard-gov": ["pretendard-gov@1.3.9", "", {}, "sha512-U9bEVWfBoM5AUAM2yJvmbffrt4oO//onVbKOIzy/pEU0SEP+6O/YmOxGgYaMgDr+zmqhDGhSwQqOnBFSgmp4bQ=="],
 
     "proc-log": ["proc-log@5.0.0", "", {}, "sha512-Azwzvl90HaF0aCz1JrDdXQykFakSSNPaPoiZ9fm5qJIMHioDZEi7OAdRwSm6rSoPtY3Qutnm3L7ogmg3dc+wbQ=="],
 
