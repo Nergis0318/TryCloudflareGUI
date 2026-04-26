@@ -42,7 +42,9 @@ export function TunnelCard({
         )}
         {error && <div className="tunnel-error">⚠ {error}</div>}
         {isStarting && (
-          <div style={{ fontSize: 12, color: "var(--yellow)" }}>연결 중...</div>
+          <div style={{ fontSize: 12, color: "var(--text-dim)" }}>
+            연결 중...
+          </div>
         )}
       </div>
 
