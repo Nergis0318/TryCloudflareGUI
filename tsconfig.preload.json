@@ -7,7 +7,7 @@
     "rootDir": "src/main",
     "strict": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
-  "include": ["src/main/preload.ts", "src/main/types.ts"],
+  "include": ["src/main/preload.ts", "src/main/types.ts"]
 }

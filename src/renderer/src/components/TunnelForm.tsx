@@ -5,9 +5,11 @@ type ConfigDraft = Omit<TunnelConfig, "id">;
 
 interface Props {
   initial?: ConfigDraft;
-  onConfirm: (config: ConfigDraft) => void;
+  onConfirm: (config: ConfigDraft, startImmediately: boolean) => void;
   onCancel: () => void;
   title: string;
+  showStartImmediately?: boolean;
+  defaultStartImmediately?: boolean;
 }
 
 const DEFAULT: ConfigDraft = {
@@ -18,8 +20,18 @@ const DEFAULT: ConfigDraft = {
   isDisposable: true,
 };
 
-export function TunnelForm({ initial, onConfirm, onCancel, title }: Props) {
+export function TunnelForm({
+  initial,
+  onConfirm,
+  onCancel,
+  title,
+  showStartImmediately = false,
+  defaultStartImmediately = true,
+}: Props) {
   const [form, setForm] = useState<ConfigDraft>(initial ?? DEFAULT);
+  const [startImmediately, setStartImmediately] = useState(
+    defaultStartImmediately,
+  );
 
   const set = (key: keyof ConfigDraft, value: string | number | boolean) =>
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -29,7 +41,7 @@ export function TunnelForm({ initial, onConfirm, onCancel, title }: Props) {
       alert("포트 번호는 1~65535 사이여야 합니다.");
       return;
     }
-    onConfirm(form);
+    onConfirm(form, startImmediately);
   };
 
   return (
@@ -104,6 +116,32 @@ export function TunnelForm({ initial, onConfirm, onCancel, title }: Props) {
             일회용 터널 (앱 종료 시 저장 안함)
           </label>
         </div>
+
+        {showStartImmediately && (
+          <div
+            className="form-group"
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 8,
+              marginTop: 4,
+            }}
+          >
+            <input
+              type="checkbox"
+              id="startImmediately"
+              checked={startImmediately}
+              onChange={(e) => setStartImmediately(e.target.checked)}
+              style={{ width: "auto" }}
+            />
+            <label
+              htmlFor="startImmediately"
+              style={{ cursor: "pointer", marginBottom: 0 }}
+            >
+              바로 실행
+            </label>
+          </div>
+        )}
 
         <div className="modal-footer">
           <button className="btn btn-ghost" onClick={onCancel}>

@@ -67,10 +67,16 @@ export default function App() {
     }
   };
 
-  const handleCreate = async (config: Omit<TunnelConfig, "id">) => {
+  const handleCreate = async (
+    config: Omit<TunnelConfig, "id">,
+    startImmediately: boolean,
+  ) => {
     const tunnel = await window.electronAPI.createTunnel(config);
     setTunnels((prev) => [...prev, tunnel]);
     setModal(null);
+    if (startImmediately) {
+      await window.electronAPI.startTunnel(tunnel.id);
+    }
   };
 
   const handleEdit = async (id: string, config: Omit<TunnelConfig, "id">) => {
@@ -196,6 +202,8 @@ export default function App() {
           title="새 터널 추가"
           onConfirm={handleCreate}
           onCancel={() => setModal(null)}
+          showStartImmediately
+          defaultStartImmediately={true}
         />
       )}
 
