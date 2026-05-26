@@ -14,6 +14,7 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "src/renderer/src"),
       "pretendard-gov": resolve(__dirname, "node_modules/pretendard-gov"),
+      "pretendard-jp": resolve(__dirname, "node_modules/pretendard-jp"),
     },
   },
   server: {
