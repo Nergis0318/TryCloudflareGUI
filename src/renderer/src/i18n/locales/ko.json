@@ -1,0 +1,54 @@
+{
+  "app": {
+    "initializing": "초기화 중...",
+    "runningCount": "{{count}}개 실행 중",
+    "addTunnel": "+ 터널 추가",
+    "downloadFailed": "다운로드 실패: "
+  },
+  "tunnelCard": {
+    "defaultName": "터널 #{{id}}",
+    "connecting": "연결 중...",
+    "status": {
+      "stopped": "중지됨",
+      "starting": "시작 중",
+      "running": "실행 중",
+      "error": "오류"
+    },
+    "start": "시작",
+    "stop": "중지",
+    "edit": "수정",
+    "delete": "삭제",
+    "deleteConfirm": "터널을 삭제하시겠습니까?"
+  },
+  "form": {
+    "newTunnel": "새 터널 추가",
+    "editTunnel": "터널 수정",
+    "nameLabel": "이름 (선택)",
+    "namePlaceholder": "내 터널",
+    "protocol": "프로토콜",
+    "localHost": "로컬 호스트",
+    "localHostPlaceholder": "localhost",
+    "port": "포트",
+    "portPlaceholder": "3000",
+    "portError": "포트 번호는 1~65535 사이여야 합니다.",
+    "disposableLabel": "일회용 터널 (앱 종료 시 저장 안함)",
+    "startImmediately": "바로 실행",
+    "cancel": "취소",
+    "confirm": "확인"
+  },
+  "download": {
+    "title": "cloudflared 가 필요합니다",
+    "description": "Try Cloudflare 터널을 사용하려면 <strong>cloudflared</strong> 바이너리가 필요합니다. 아래 버튼을 눌러 자동으로 다운로드하세요.",
+    "downloading": "다운로드 중... {{p}}%",
+    "button": "cloudflared 다운로드"
+  },
+  "empty": {
+    "noTunnels": "터널이 없습니다",
+    "description": "\"+ 터널 추가\" 버튼으로 새 터널을 만들거나<br/>오른쪽 프리셋을 클릭해 빠르게 시작하세요.",
+    "addTunnel": "+ 터널 추가"
+  },
+  "sidebar": {
+    "language": "언어",
+    "presets": "빠른 시작"
+  }
+}

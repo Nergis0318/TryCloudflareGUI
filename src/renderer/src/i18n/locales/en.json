@@ -1,0 +1,54 @@
+{
+  "app": {
+    "initializing": "Initializing...",
+    "runningCount": "{{count}} running",
+    "addTunnel": "+ Add Tunnel",
+    "downloadFailed": "Download failed: "
+  },
+  "tunnelCard": {
+    "defaultName": "Tunnel #{{id}}",
+    "connecting": "Connecting...",
+    "status": {
+      "stopped": "Stopped",
+      "starting": "Starting",
+      "running": "Running",
+      "error": "Error"
+    },
+    "start": "Start",
+    "stop": "Stop",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this tunnel?"
+  },
+  "form": {
+    "newTunnel": "New Tunnel",
+    "editTunnel": "Edit Tunnel",
+    "nameLabel": "Name (optional)",
+    "namePlaceholder": "My Tunnel",
+    "protocol": "Protocol",
+    "localHost": "Local Host",
+    "localHostPlaceholder": "localhost",
+    "port": "Port",
+    "portPlaceholder": "3000",
+    "portError": "Port must be between 1 and 65535.",
+    "disposableLabel": "Disposable tunnel (not saved on exit)",
+    "startImmediately": "Start immediately",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "download": {
+    "title": "cloudflared is required",
+    "description": "The <strong>cloudflared</strong> binary is required to use TryCloudflare tunnels. Click the button below to download it automatically.",
+    "downloading": "Downloading... {{p}}%",
+    "button": "Download cloudflared"
+  },
+  "empty": {
+    "noTunnels": "No Tunnels",
+    "description": "Create a new tunnel with the \"+ Add Tunnel\" button<br/>or click a preset on the right to quickly get started.",
+    "addTunnel": "+ Add Tunnel"
+  },
+  "sidebar": {
+    "language": "Language",
+    "presets": "Quick Start"
+  }
+}

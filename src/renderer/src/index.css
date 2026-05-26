@@ -1,4 +1,5 @@
 @import "/pretendard-gov.css";
+@import "/pretendard-jp.css";
 
 *,
 *::before,
@@ -82,6 +83,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body[data-lang="ja"] {
+  font-family:
+    "Pretendard JP Variable",
+    "Pretendard GOV Variable",
+    "Pretendard GOV",
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    sans-serif;
+}
+
 /* ── Layout ── */
 .app {
   display: flex;
@@ -134,12 +155,15 @@ body {
 }
 
 .sidebar {
-  width: 280px;
+  width: 220px;
   border-left: 1px solid var(--border);
   background: var(--bg-card);
   overflow-y: auto;
-  padding: 20px;
+  padding: 16px;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* ── Buttons ── */
@@ -615,6 +639,39 @@ select option {
   display: flex;
   gap: 4px;
   flex-shrink: 0;
+}
+
+/* ── Language Switcher ── */
+.lang-switcher {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lang-switcher select {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 7px 10px;
+  font-size: 13px;
+  font-weight: 450;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.lang-switcher select:hover:not(:focus) {
+  border-color: var(--border-strong);
+}
+
+.lang-switcher select:focus {
+  border-color: var(--border-focus);
+  box-shadow: var(--ring-focus);
 }
 
 .badge {

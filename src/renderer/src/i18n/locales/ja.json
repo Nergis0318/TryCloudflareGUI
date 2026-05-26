@@ -1,0 +1,54 @@
+{
+  "app": {
+    "initializing": "初期化中...",
+    "runningCount": "{{count}}個実行中",
+    "addTunnel": "+ トンネル追加",
+    "downloadFailed": "ダウンロード失敗: "
+  },
+  "tunnelCard": {
+    "defaultName": "トンネル #{{id}}",
+    "connecting": "接続中...",
+    "status": {
+      "stopped": "停止中",
+      "starting": "起動中",
+      "running": "実行中",
+      "error": "エラー"
+    },
+    "start": "開始",
+    "stop": "停止",
+    "edit": "編集",
+    "delete": "削除",
+    "deleteConfirm": "このトンネルを削除しますか？"
+  },
+  "form": {
+    "newTunnel": "新しいトンネル",
+    "editTunnel": "トンネル編集",
+    "nameLabel": "名前 (任意)",
+    "namePlaceholder": "マイトンネル",
+    "protocol": "プロトコル",
+    "localHost": "ローカルホスト",
+    "localHostPlaceholder": "localhost",
+    "port": "ポート",
+    "portPlaceholder": "3000",
+    "portError": "ポート番号は1〜65535の間で指定してください。",
+    "disposableLabel": "使い捨てトンネル (終了時に保存されません)",
+    "startImmediately": "すぐに起動",
+    "cancel": "キャンセル",
+    "confirm": "確認"
+  },
+  "download": {
+    "title": "cloudflaredが必要です",
+    "description": "TryCloudflareトンネルを使用するには<strong>cloudflared</strong>バイナリが必要です。下のボタンをクリックして自動的にダウンロードしてください。",
+    "downloading": "ダウンロード中... {{p}}%",
+    "button": "cloudflaredをダウンロード"
+  },
+  "empty": {
+    "noTunnels": "トンネルがありません",
+    "description": "「+ トンネル追加」ボタンで新しいトンネルを作成するか、<br/>右のプリセットをクリックしてすぐに開始してください。",
+    "addTunnel": "+ トンネル追加"
+  },
+  "sidebar": {
+    "language": "言語",
+    "presets": "クイックスタート"
+  }
+}
