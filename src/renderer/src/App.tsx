@@ -1,18 +1,28 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useTranslation, Trans } from "react-i18next";
 import { TunnelInstance, TunnelConfig } from "./types";
 import { TunnelCard } from "./components/TunnelCard";
 import { TunnelForm } from "./components/TunnelForm";
 import { DownloadScreen } from "./components/DownloadScreen";
+import { Sidebar } from "./components/Sidebar";
 import "./types/electron.d";
 
 type Modal =
-  | { type: "create" }
+  | { type: "create"; preset?: Omit<TunnelConfig, "id" | "name"> }
   | { type: "edit"; tunnel: TunnelInstance }
   | null;
 
 type AppStage = "checking" | "needsDownload" | "ready";
 
 export default function App() {
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    const lang = i18n.language?.slice(0, 2) ?? "ko";
+    document.body.setAttribute("data-lang", lang);
+    document.documentElement.lang = lang;
+  }, [i18n.language]);
+
   const [stage, setStage] = useState<AppStage>("checking");
   const [downloadProgress, setDownloadProgress] = useState<number | null>(null);
   const [tunnels, setTunnels] = useState<TunnelInstance[]>([]);
@@ -63,7 +73,7 @@ export default function App() {
     } catch (e) {
       unsub();
       setDownloadProgress(null);
-      alert("다운로드 실패: " + (e as Error).message);
+      alert(t("app.downloadFailed") + (e as Error).message);
     }
   };
 
@@ -99,7 +109,7 @@ export default function App() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("터널을 삭제하시겠습니까?")) return;
+    if (!confirm(t("tunnelCard.deleteConfirm"))) return;
     await window.electronAPI.deleteTunnel(id);
     setTunnels((prev) => prev.filter((t) => t.id !== id));
   };
@@ -114,7 +124,7 @@ export default function App() {
           alt="Cloudflare"
           style={{ width: 52, height: 52 }}
         />
-        <p style={{ color: "var(--text-muted)" }}>초기화 중...</p>
+        <p style={{ color: "var(--text-muted)" }}>{t("app.initializing")}</p>
       </div>
     );
   }
@@ -142,7 +152,7 @@ export default function App() {
           Try<span>Cloudflare</span> GUI
           {runningCount > 0 && (
             <span className="badge badge-running" style={{ marginLeft: 4 }}>
-              {runningCount}개 실행 중
+              {t("app.runningCount", { count: runningCount })}
             </span>
           )}
         </div>
@@ -151,7 +161,7 @@ export default function App() {
             className="btn btn-primary"
             onClick={() => setModal({ type: "create" })}
           >
-            + 터널 추가
+            {t("app.addTunnel")}
           </button>
         </div>
       </header>
@@ -168,18 +178,19 @@ export default function App() {
                   color: "var(--text-dim)",
                 }}
               >
-                터널이 없습니다
+                {t("empty.noTunnels")}
               </p>
               <p style={{ fontSize: 13 }}>
-                "+ 터널 추가" 버튼으로 새 터널을 만들거나
-                <br />
-                오른쪽 프리셋을 클릭해 빠르게 시작하세요.
+                <Trans
+                  i18nKey="empty.description"
+                  components={{ br: <br /> }}
+                />
               </p>
               <button
                 className="btn btn-primary"
                 onClick={() => setModal({ type: "create" })}
               >
-                + 터널 추가
+                {t("empty.addTunnel")}
               </button>
             </div>
           ) : (
@@ -195,11 +206,27 @@ export default function App() {
             ))
           )}
         </div>
+        <Sidebar
+          onPresetClick={(config) =>
+            setModal({ type: "create", preset: config })
+          }
+        />
       </div>
 
       {modal?.type === "create" && (
         <TunnelForm
-          title="새 터널 추가"
+          title={t("form.newTunnel")}
+          initial={
+            modal.preset
+              ? {
+                  name: "",
+                  localHost: modal.preset.localHost,
+                  localPort: modal.preset.localPort,
+                  protocol: modal.preset.protocol,
+                  isDisposable: true,
+                }
+              : undefined
+          }
           onConfirm={handleCreate}
           onCancel={() => setModal(null)}
           showStartImmediately
@@ -209,7 +236,7 @@ export default function App() {
 
       {modal?.type === "edit" && (
         <TunnelForm
-          title="터널 수정"
+          title={t("form.editTunnel")}
           initial={modal.tunnel.config}
           onConfirm={(config) => handleEdit(modal.tunnel.id, config)}
           onCancel={() => setModal(null)}
