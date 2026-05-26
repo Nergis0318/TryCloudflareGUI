@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { TunnelConfig } from "../types";
 
 type ConfigDraft = Omit<TunnelConfig, "id">;
@@ -28,6 +29,7 @@ export function TunnelForm({
   showStartImmediately = false,
   defaultStartImmediately = true,
 }: Props) {
+  const { t } = useTranslation();
   const [form, setForm] = useState<ConfigDraft>(initial ?? DEFAULT);
   const [startImmediately, setStartImmediately] = useState(
     defaultStartImmediately,
@@ -38,7 +40,7 @@ export function TunnelForm({
 
   const handleSubmit = () => {
     if (!form.localPort || form.localPort < 1 || form.localPort > 65535) {
-      alert("포트 번호는 1~65535 사이여야 합니다.");
+      alert(t("form.portError"));
       return;
     }
     onConfirm(form, startImmediately);
@@ -50,17 +52,17 @@ export function TunnelForm({
         <div className="modal-title">{title}</div>
 
         <div className="form-group">
-          <label>이름 (선택)</label>
+          <label>{t("form.nameLabel")}</label>
           <input
             value={form.name}
             onChange={(e) => set("name", e.target.value)}
-            placeholder="내 터널"
+            placeholder={t("form.namePlaceholder")}
           />
         </div>
 
         <div className="form-row">
           <div className="form-group">
-            <label>프로토콜</label>
+            <label>{t("form.protocol")}</label>
             <select
               value={form.protocol}
               onChange={(e) => set("protocol", e.target.value)}
@@ -72,24 +74,24 @@ export function TunnelForm({
             </select>
           </div>
           <div className="form-group" style={{ flex: 2 }}>
-            <label>로컬 호스트</label>
+            <label>{t("form.localHost")}</label>
             <input
               value={form.localHost}
               onChange={(e) => set("localHost", e.target.value)}
-              placeholder="localhost"
+              placeholder={t("form.localHostPlaceholder")}
             />
           </div>
         </div>
 
         <div className="form-group">
-          <label>포트</label>
+          <label>{t("form.port")}</label>
           <input
             type="number"
             min={1}
             max={65535}
             value={form.localPort}
             onChange={(e) => set("localPort", parseInt(e.target.value) || 0)}
-            placeholder="3000"
+            placeholder={t("form.portPlaceholder")}
           />
         </div>
 
@@ -113,7 +115,7 @@ export function TunnelForm({
             htmlFor="isDisposable"
             style={{ cursor: "pointer", marginBottom: 0 }}
           >
-            일회용 터널 (앱 종료 시 저장 안함)
+            {t("form.disposableLabel")}
           </label>
         </div>
 
@@ -138,17 +140,17 @@ export function TunnelForm({
               htmlFor="startImmediately"
               style={{ cursor: "pointer", marginBottom: 0 }}
             >
-              바로 실행
+              {t("form.startImmediately")}
             </label>
           </div>
         )}
 
         <div className="modal-footer">
           <button className="btn btn-ghost" onClick={onCancel}>
-            취소
+            {t("form.cancel")}
           </button>
           <button className="btn btn-primary" onClick={handleSubmit}>
-            확인
+            {t("form.confirm")}
           </button>
         </div>
       </div>
