@@ -7,6 +7,8 @@ tunnels from a graphical interface.
 It wraps `cloudflared tunnel --url` in an Electron app, so you can expose local
 development servers without memorizing CLI commands.
 
+<img width="1555" height="1128" alt="image" src="https://github.com/user-attachments/assets/ae9b58cb-2c0f-4ca2-9cc2-7e9760113eb2" />
+
 ## Features
 
 - Detects an existing `cloudflared` installation or downloads the binary for you.
