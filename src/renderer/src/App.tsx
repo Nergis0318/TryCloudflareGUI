@@ -5,6 +5,7 @@ import { TunnelCard } from "./components/TunnelCard";
 import { TunnelForm } from "./components/TunnelForm";
 import { DownloadScreen } from "./components/DownloadScreen";
 import { Sidebar } from "./components/Sidebar";
+import { AppIcon } from "./components/AppIcon";
 import "./types/electron.d";
 
 type Modal =
@@ -119,11 +120,7 @@ export default function App() {
   if (stage === "checking") {
     return (
       <div className="download-screen">
-        <img
-          src="/public/favicon.ico"
-          alt="Cloudflare"
-          style={{ width: 52, height: 52 }}
-        />
+        <AppIcon size={52} />
         <p style={{ color: "var(--text-muted)" }}>{t("app.initializing")}</p>
       </div>
     );
@@ -139,16 +136,7 @@ export default function App() {
     <div className="app">
       <header className="header">
         <div className="header-title">
-          <img
-            src="/public/favicon.ico"
-            alt="Cloudflare"
-            style={{
-              width: 24,
-              height: 24,
-              marginRight: 8,
-              verticalAlign: "middle",
-            }}
-          />
+          <AppIcon size={24} />
           Try<span>Cloudflare</span> GUI
           {runningCount > 0 && (
             <span className="badge badge-running" style={{ marginLeft: 4 }}>

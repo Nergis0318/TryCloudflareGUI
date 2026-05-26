@@ -1,4 +1,5 @@
 import { useTranslation, Trans } from "react-i18next";
+import { AppIcon } from "./AppIcon";
 
 interface Props {
   progress: number | null;
@@ -11,11 +12,7 @@ export function DownloadScreen({ progress, onDownload }: Props) {
 
   return (
     <div className="download-screen">
-      <img
-        src="/public/favicon.ico"
-        alt="Cloudflare"
-        style={{ width: 52, height: 52 }}
-      />
+      <AppIcon size={52} />
       <h2>{t("download.title")}</h2>
       <p>
         <Trans

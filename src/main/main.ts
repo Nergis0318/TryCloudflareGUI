@@ -17,6 +17,10 @@ function createWindow(): void {
     height: 650,
     minWidth: 700,
     minHeight: 500,
+    icon: path.join(
+      isDev ? app.getAppPath() : process.resourcesPath,
+      "resources/icon.png",
+    ),
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
