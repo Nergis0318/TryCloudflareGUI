@@ -1,9 +1,12 @@
+import { useTranslation, Trans } from "react-i18next";
+
 interface Props {
   progress: number | null;
   onDownload: () => void;
 }
 
 export function DownloadScreen({ progress, onDownload }: Props) {
+  const { t } = useTranslation();
   const isDownloading = progress !== null;
 
   return (
@@ -13,10 +16,12 @@ export function DownloadScreen({ progress, onDownload }: Props) {
         alt="Cloudflare"
         style={{ width: 52, height: 52 }}
       />
-      <h2>cloudflared 가 필요합니다</h2>
+      <h2>{t("download.title")}</h2>
       <p>
-        Try Cloudflare 터널을 사용하려면 <strong>cloudflared</strong> 바이너리가
-        필요합니다. 아래 버튼을 눌러 자동으로 다운로드하세요.
+        <Trans
+          i18nKey="download.description"
+          components={{ strong: <strong /> }}
+        />
       </p>
 
       {isDownloading ? (
@@ -25,7 +30,7 @@ export function DownloadScreen({ progress, onDownload }: Props) {
             <div className="progress-bar" style={{ width: `${progress}%` }} />
           </div>
           <p style={{ fontSize: 13, color: "var(--text-muted)" }}>
-            다운로드 중... {progress}%
+            {t("download.downloading", { p: progress })}
           </p>
         </>
       ) : (
@@ -34,7 +39,7 @@ export function DownloadScreen({ progress, onDownload }: Props) {
           onClick={onDownload}
           style={{ fontSize: 14, padding: "10px 24px" }}
         >
-          cloudflared 다운로드
+          {t("download.button")}
         </button>
       )}
     </div>
