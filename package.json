@@ -15,7 +15,7 @@
   },
   "keywords": [],
   "author": "DevNergis",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@types/node": "^25.9.1",
     "@types/react": "^19.2.15",
