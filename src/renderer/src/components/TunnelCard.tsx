@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { TunnelInstance } from "../types";
 
 interface Props {
@@ -15,6 +16,7 @@ export function TunnelCard({
   onEdit,
   onDelete,
 }: Props) {
+  const { t } = useTranslation();
   const { config, status, url, error } = tunnel;
   const isRunning = status === "running";
   const isStarting = status === "starting";
@@ -26,7 +28,7 @@ export function TunnelCard({
 
       <div className="tunnel-info">
         <div className="tunnel-name">
-          {config.name || `터널 #${config.id.slice(0, 6)}`}
+          {config.name || t("tunnelCard.defaultName", { id: config.id.slice(0, 6) })}
         </div>
         <div className="tunnel-target">
           {config.protocol}://{config.localHost}:{config.localPort}
@@ -43,25 +45,19 @@ export function TunnelCard({
         {error && <div className="tunnel-error">⚠ {error}</div>}
         {isStarting && (
           <div style={{ fontSize: 12, color: "var(--text-dim)" }}>
-            연결 중...
+            {t("tunnelCard.connecting")}
           </div>
         )}
       </div>
 
       <div className="tunnel-actions">
         <span className={`badge ${isRunning ? "badge-running" : ""}`}>
-          {status === "stopped"
-            ? "중지됨"
-            : status === "starting"
-              ? "시작 중"
-              : status === "running"
-                ? "실행 중"
-                : "오류"}
+          {t(`tunnelCard.status.${status}`)}
         </span>
 
         {!isBusy ? (
           <button className="btn btn-primary btn-sm" onClick={onStart}>
-            ▶ 시작
+            {t("tunnelCard.start")}
           </button>
         ) : (
           <button
@@ -69,14 +65,14 @@ export function TunnelCard({
             onClick={onStop}
             disabled={isStarting}
           >
-            ■ 중지
+            {t("tunnelCard.stop")}
           </button>
         )}
 
         <button
           className="btn-icon"
           onClick={onEdit}
-          title="수정"
+          title={t("tunnelCard.edit")}
           disabled={isBusy}
         >
           ✎
@@ -84,7 +80,7 @@ export function TunnelCard({
         <button
           className="btn-icon"
           onClick={onDelete}
-          title="삭제"
+          title={t("tunnelCard.delete")}
           style={{ color: "var(--red)" }}
           disabled={isBusy}
         >
