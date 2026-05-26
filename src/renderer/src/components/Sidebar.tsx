@@ -8,16 +8,46 @@ interface Preset {
 }
 
 const PRESETS: Preset[] = [
-  { name: "React", config: { localHost: "localhost", localPort: 3000, protocol: "http" } },
-  { name: "Vite", config: { localHost: "localhost", localPort: 5173, protocol: "http" } },
-  { name: "Next.js", config: { localHost: "localhost", localPort: 3000, protocol: "http" } },
-  { name: "Express", config: { localHost: "localhost", localPort: 3000, protocol: "http" } },
-  { name: "Flask", config: { localHost: "localhost", localPort: 5000, protocol: "http" } },
-  { name: "Django", config: { localHost: "localhost", localPort: 8000, protocol: "http" } },
-  { name: "Laravel", config: { localHost: "localhost", localPort: 8000, protocol: "http" } },
-  { name: "Rails", config: { localHost: "localhost", localPort: 3000, protocol: "http" } },
-  { name: "ASP.NET", config: { localHost: "localhost", localPort: 5000, protocol: "https" } },
-  { name: "Go", config: { localHost: "localhost", localPort: 8080, protocol: "http" } },
+  {
+    name: "React",
+    config: { localHost: "localhost", localPort: 3000, protocol: "http" },
+  },
+  {
+    name: "Vite",
+    config: { localHost: "localhost", localPort: 5173, protocol: "http" },
+  },
+  {
+    name: "Next.js",
+    config: { localHost: "localhost", localPort: 3000, protocol: "http" },
+  },
+  {
+    name: "Express",
+    config: { localHost: "localhost", localPort: 3000, protocol: "http" },
+  },
+  {
+    name: "Flask",
+    config: { localHost: "localhost", localPort: 5000, protocol: "http" },
+  },
+  {
+    name: "Django",
+    config: { localHost: "localhost", localPort: 8000, protocol: "http" },
+  },
+  {
+    name: "Laravel",
+    config: { localHost: "localhost", localPort: 8000, protocol: "http" },
+  },
+  {
+    name: "Rails",
+    config: { localHost: "localhost", localPort: 3000, protocol: "http" },
+  },
+  {
+    name: "ASP.NET",
+    config: { localHost: "localhost", localPort: 5000, protocol: "https" },
+  },
+  {
+    name: "Go",
+    config: { localHost: "localhost", localPort: 8080, protocol: "http" },
+  },
 ];
 
 interface Props {
@@ -41,7 +71,8 @@ export function Sidebar({ onPresetClick }: Props) {
           >
             <span className="preset-name">{preset.name}</span>
             <span className="preset-meta">
-              {preset.config.protocol}://{preset.config.localHost}:{preset.config.localPort}
+              {preset.config.protocol}://{preset.config.localHost}:
+              {preset.config.localPort}
             </span>
           </div>
         ))}

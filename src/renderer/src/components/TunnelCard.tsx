@@ -28,7 +28,8 @@ export function TunnelCard({
 
       <div className="tunnel-info">
         <div className="tunnel-name">
-          {config.name || t("tunnelCard.defaultName", { id: config.id.slice(0, 6) })}
+          {config.name ||
+            t("tunnelCard.defaultName", { id: config.id.slice(0, 6) })}
         </div>
         <div className="tunnel-target">
           {config.protocol}://{config.localHost}:{config.localPort}
