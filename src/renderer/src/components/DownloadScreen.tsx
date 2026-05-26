@@ -12,7 +12,7 @@ export function DownloadScreen({ progress, onDownload }: Props) {
 
   return (
     <div className="download-screen">
-      <AppIcon size={52} />
+      <AppIcon />
       <h2>{t("download.title")}</h2>
       <p>
         <Trans

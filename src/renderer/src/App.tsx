@@ -120,7 +120,7 @@ export default function App() {
   if (stage === "checking") {
     return (
       <div className="download-screen">
-        <AppIcon size={52} />
+        <AppIcon />
         <p style={{ color: "var(--text-muted)" }}>{t("app.initializing")}</p>
       </div>
     );
@@ -136,7 +136,7 @@ export default function App() {
     <div className="app">
       <header className="header">
         <div className="header-title">
-          <AppIcon size={24} />
+          <AppIcon />
           Try<span>Cloudflare</span> GUI
           {runningCount > 0 && (
             <span className="badge badge-running" style={{ marginLeft: 4 }}>
