@@ -37,6 +37,7 @@ jobs:
         with:
           name: release-${{ matrix.os }}
           path: release/
+          if-no-files-found: error
 
   release:
     needs: build

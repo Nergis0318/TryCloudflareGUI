@@ -28,5 +28,8 @@ jobs:
       - name: Typecheck (renderer process)
         run: bunx tsc -p tsconfig.json --noEmit
 
+      - name: Typecheck (preload script)
+        run: bunx tsc -p tsconfig.preload.json --noEmit
+
       - name: Build
         run: bun run build
