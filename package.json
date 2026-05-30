@@ -1,6 +1,6 @@
 {
   "name": "try-cloudflare-gui",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "GUI application for managing Try Cloudflare tunnels",
   "main": "dist/main/main.js",
   "scripts": {
