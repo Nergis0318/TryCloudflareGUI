@@ -66,3 +66,10 @@ bun run build:electron
 ### 📄 라이선스
 
 [GNU General Public License v3.0](LICENSE)
+
+### 🎨 아이콘
+
+애플리케이션 아이콘은 **Streamline Ultimate Color** 아이콘 세트의 `road-tunnel` 아이콘입니다.
+
+- **출처:** streamline-ultimate-color:road-tunnel
+- **라이선스:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)

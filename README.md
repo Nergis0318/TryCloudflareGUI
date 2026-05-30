@@ -66,3 +66,10 @@ Tunnels can be stopped/started individually and will automatically reconnect on 
 ### 📄 License
 
 [GNU General Public License v3.0](LICENSE)
+
+### 🎨 Icon
+
+The application icon is the `road-tunnel` icon from the **Streamline Ultimate Color** icon set.
+
+- **Source:** streamline-ultimate-color:road-tunnel
+- **License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
