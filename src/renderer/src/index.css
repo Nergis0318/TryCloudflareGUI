@@ -139,6 +139,21 @@ body[data-lang="ja"] {
   gap: 8px;
 }
 
+/* Ensure AppIcon (SVG logo) is always visible at proper size in header */
+.header-title svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Reasonable size for centered logo on download/initial screens */
+.download-screen svg {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
 .main {
   display: flex;
   flex: 1;
@@ -685,6 +700,8 @@ select option {
   color: var(--text-muted);
   border: 1px solid var(--border);
   line-height: 1.4;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .badge-running {
