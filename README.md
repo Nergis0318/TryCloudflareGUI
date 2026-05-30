@@ -1,114 +1,68 @@
-# TryCloudflareGUI
+# TryCloudflare GUI
 
-TryCloudflareGUI is a desktop application for creating and managing temporary
-[TryCloudflare](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/)
-tunnels from a graphical interface.
+> [한국어 버전 보기 (README.ko.md)](./README.ko.md)
 
-It wraps `cloudflared tunnel --url` in an Electron app, so you can expose local
-development servers without memorizing CLI commands.
+A simple and beautiful desktop GUI for managing [TryCloudflare](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/run-tunnel/trycloudflare/) tunnels.
 
-<img width="1555" height="1128" alt="image" src="https://github.com/user-attachments/assets/ae9b58cb-2c0f-4ca2-9cc2-7e9760113eb2" />
+**TryCloudflare GUI** lets you instantly expose your local development servers (web, API, databases, SSH, etc.) to the public internet using temporary `*.trycloudflare.com` URLs — powered by Cloudflare's `cloudflared`.
 
-## Features
+### ✨ Features
 
-- Detects an existing `cloudflared` installation or downloads the binary for you.
-- Creates, edits, starts, stops, and deletes tunnel configurations.
-- Shows live tunnel status and generated `trycloudflare.com` URLs.
-- Opens generated tunnel URLs in the system browser.
-- Includes quick-start presets for common local frameworks and servers.
-- Supports HTTP, HTTPS, TCP, and SSH targets.
-- Supports disposable tunnels that are not saved after the app exits.
-- Provides multilingual UI support through i18next.
+- **One-click tunnel management** — Start, stop, edit, and delete tunnels with a clean interface
+- **Automatic cloudflared setup** — Downloads the official `cloudflared` binary automatically if missing
+- **Quick presets** — One-click starters for React, Vite, Next.js, Express, Flask, Django, Laravel, Rails, ASP.NET, Go, and more
+- **Persistent configurations** — Your tunnels are saved across app restarts (optional disposable tunnels available)
+- **Multi-protocol support** — HTTP, HTTPS, TCP, and SSH
+- **Real-time status** — Live updates when tunnels are ready with their public URLs
+- **Multilingual UI** — English, 한국어, 日本語
 
-## Tech Stack
+### 📦 Installation
 
-- Electron
-- React
-- TypeScript
-- Vite
-- Bun
-- electron-builder
-- i18next / react-i18next
+#### Download (Recommended)
 
-## Prerequisites
+Pre-built binaries for Windows, macOS, and Linux will be available in the [Releases](https://github.com/Nergis0318/TryCloudflareGUI/releases) page.
 
-- [Bun](https://bun.sh/) for installing dependencies and running scripts.
-- Internet access when the app needs to download `cloudflared`.
-- A local service to expose, such as `http://localhost:3000`.
+#### Build from Source
 
-`cloudflared` does not have to be installed manually. The app checks for a
-system installation first, then downloads an app-managed binary if needed.
-
-## Getting Started
-
-Install dependencies:
+**Requirements:** [Bun](https://bun.sh) (recommended) or Node.js 20+
 
 ```bash
+# Clone the repository
+git clone https://github.com/Nergis0318/TryCloudflareGUI.git
+cd TryCloudflareGUI
+
+# Install dependencies
 bun install
-```
 
-Start the app in development mode:
-
-```bash
+# Run in development mode
 bun run dev
-```
 
-This starts the Vite dev server and launches Electron after the renderer is
-available.
-
-## Scripts
-
-| Command                  | Description                                               |
-| ------------------------ | --------------------------------------------------------- |
-| `bun run dev`            | Start Vite and Electron together for development.         |
-| `bun run dev:vite`       | Start only the Vite renderer dev server.                  |
-| `bun run dev:electron`   | Compile the main process and launch Electron.             |
-| `bun run build`          | Build the renderer and compile the Electron main process. |
-| `bun run build:main`     | Compile only the Electron main process.                   |
-| `bun run build:electron` | Build and package the app with electron-builder.          |
-| `bun run preview`        | Preview the built Vite renderer.                          |
-| `bun run generate-icons` | Generate app icons from the source icon asset.            |
-
-## Building
-
-Create a production build:
-
-```bash
+# Build the app
 bun run build
-```
 
-Package the Electron app:
-
-```bash
+# Package distributables (creates ./release folder)
 bun run build:electron
 ```
 
-Packaged outputs are written to `release/`. The electron-builder configuration
-targets NSIS on Windows, DMG on macOS, and AppImage on Linux.
+### 🚀 Usage
 
-## Project Structure
+1. Launch the app
+2. If `cloudflared` is not installed, the app will prompt you to download it (one click)
+3. Click **+ Add Tunnel** or use a preset on the right sidebar
+4. Enter your local port (e.g., 3000 for React) and optional name
+5. Click **Confirm** (or enable "Start immediately")
+6. Copy the generated public `https://xxx.trycloudflare.com` URL and share it
 
-```text
-.
-├── .github/workflows/    # CI and release workflows
-├── resources/            # Application icons and packaged resources
-├── scripts/              # Utility scripts
-├── src/main/             # Electron main process, IPC, tunnel management
-├── src/renderer/         # React renderer application
-├── package.json          # Scripts, dependencies, electron-builder config
-└── README.md
-```
+Tunnels can be stopped/started individually and will automatically reconnect on errors when possible.
 
-## Usage Notes
+### 🛠 Tech Stack
 
-- TryCloudflare URLs are temporary and generated by Cloudflare when a tunnel
-  starts.
-- Saved tunnel configurations are stored in Electron's app data directory.
-- Disposable tunnels are intentionally excluded from saved tunnel data.
-- Running tunnels are stopped when the application exits.
-- This app is intended for local development and testing workflows, not for
-  production ingress.
+- **Desktop:** Electron
+- **UI:** React 19 + TypeScript + Vite
+- **Styling:** Custom CSS (Pretendard font)
+- **Internationalization:** i18next + react-i18next
+- **Core:** Official `cloudflared` binary (auto-managed)
 
-## License
+### 📄 License
 
-This project is licensed under the GPL-3.0 license.
+[GNU General Public License v3.0](LICENSE)
